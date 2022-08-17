@@ -8,7 +8,7 @@ color: Color(0xFF8D8E98),
 
 class IconContent extends StatelessWidget {
 
-  IconContent({required this.icon, required this.label});  //Constructor
+  IconContent({required this.icon, required this.label});  //This is a Constructor
 
   final IconData icon;        //Properties
   final String label;         //Properties
