@@ -6,8 +6,35 @@ import 'reusable_card.dart';
 const bottomContainerHeight = 80.0;
 const bottomContainerColour = Color(0x3F316EFF);
 const activeCardColour = Color(0xEB1350C8);
+const inactiveCardColour = Color(0xEB1820D5);
 
 class InputPage extends StatefulWidget {
+  Color maleCardColor = inactiveCardColour;
+  Color femaleCardColor = inactiveCardColour;
+
+  //1 is male and 2 is female
+  //void updateColour is a method
+  void updateColour(int gender) {
+    //male card pressed
+    if (gender == 1) {
+      if (maleCardColor == inactiveCardColour) {
+        maleCardColor == activeCardColour;
+        femaleCardColor == inactiveCardColour;
+      } else {
+        maleCardColor == inactiveCardColour;
+      }
+    }
+    //female card pressed
+    if (gender == 2){
+      if (femaleCardColor == inactiveCardColour) {
+        femaleCardColor == activeCardColour;
+        maleCardColor == inactiveCardColour;
+      } else {
+        femaleCardColor == inactiveCardColour;
+      }
+    }
+  }
+
   @override
   _InputPageState createState() => _InputPageState();
 }
@@ -22,33 +49,43 @@ class _InputPageState extends State<InputPage> {
       body: Column(
         children: <Widget>[
           Expanded(
-              child: Row(
-            children: <Widget>[
-              Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    print('The Male card was pressed.');
-                  },
-                  child: ReusableCard(
-                    colour: activeCardColour,
-                    cardChild: IconContent(
-                      icon: FontAwesomeIcons.mars,
-                      label: 'MALE',
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        updateColour(1);
+                      });
+                    },
+                    child: ReusableCard(
+                      colour: inactiveCardColour,
+                      cardChild: IconContent(
+                        icon: FontAwesomeIcons.mars,
+                        label: 'MALES',
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: ReusableCard(
-                  colour: activeCardColour,
-                  cardChild: IconContent(
-                    icon: FontAwesomeIcons.venus,
-                    label: 'FEMALE',
+                Expanded(
+                  child: GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        updateColour(2);
+                      });
+                    },
+                    child: ReusableCard(
+                      colour: activeCardColour,
+                      cardChild: IconContent(
+                        icon: FontAwesomeIcons.venus,
+                        label: 'FEMALE',
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ],
-          )),
+              ],
+            ),
+          ),
           Expanded(
             child: Row(
               children: <Widget>[
@@ -57,7 +94,7 @@ class _InputPageState extends State<InputPage> {
                     colour: activeCardColour,
                     cardChild: IconContent(
                       icon: FontAwesomeIcons.venus,
-                      label: 'FEMALES',
+                      label: 'MALES AND FEMALES',
                     ),
                   ),
                 ),
@@ -72,7 +109,7 @@ class _InputPageState extends State<InputPage> {
                   colour: activeCardColour,
                   cardChild: IconContent(
                     icon: FontAwesomeIcons.venus,
-                    label: 'FEMALE',
+                    label: 'MALE',
                   ),
                 ),
               ),
@@ -98,3 +135,5 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
+
+
