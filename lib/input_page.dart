@@ -25,23 +25,43 @@ class _InputPageState extends State<InputPage> {
               child: Row(
             children: <Widget>[
               Expanded(
-                child: ReusableCard(
-                  colour: activeCardColour,
-                  cardChild: IconContent(icon: FontAwesomeIcons.mars, label: 'MALE',),
+                child: GestureDetector(
+                  onTap: () {
+                    print('The Male card was pressed.');
+                  },
+                  child: ReusableCard(
+                    colour: activeCardColour,
+                    cardChild: IconContent(
+                      icon: FontAwesomeIcons.mars,
+                      label: 'MALE',
+                    ),
+                  ),
                 ),
               ),
               Expanded(
                 child: ReusableCard(
                   colour: activeCardColour,
-                  cardChild: IconContent(icon: FontAwesomeIcons.venus, label: 'FEMALE',),
+                  cardChild: IconContent(
+                    icon: FontAwesomeIcons.venus,
+                    label: 'FEMALE',
+                  ),
                 ),
               ),
             ],
           )),
           Expanded(
-            child: ReusableCard(
-              colour: activeCardColour,
-              cardChild: IconContent(icon: FontAwesomeIcons.venus, label: 'FEMALES',),
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: ReusableCard(
+                    colour: activeCardColour,
+                    cardChild: IconContent(
+                      icon: FontAwesomeIcons.venus,
+                      label: 'FEMALES',
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           Expanded(
@@ -50,13 +70,19 @@ class _InputPageState extends State<InputPage> {
               Expanded(
                 child: ReusableCard(
                   colour: activeCardColour,
-                  cardChild: IconContent(icon: FontAwesomeIcons.venus, label: 'FEMALE',),
+                  cardChild: IconContent(
+                    icon: FontAwesomeIcons.venus,
+                    label: 'FEMALE',
+                  ),
                 ),
               ),
               Expanded(
                 child: ReusableCard(
                   colour: activeCardColour,
-                  cardChild: IconContent(icon: FontAwesomeIcons.venus, label: 'FEMALE',),
+                  cardChild: IconContent(
+                    icon: FontAwesomeIcons.venus,
+                    label: 'FEMALE',
+                  ),
                 ),
               ),
             ],
@@ -72,5 +98,3 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
-
-
